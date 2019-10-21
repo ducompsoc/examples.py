@@ -1,0 +1,20 @@
+#this function saves the data to an extrnal text file
+#recieves four lists and saves them to an external textfile
+the function creates, and fills in the whole textfile
+
+def save_data(t,ypos,xpos,velres):
+	print("this will save data")
+	f = open("savefile.csv","w")                  # creates the textfile 
+	i=0
+	f.write("i,t,x,y\n")                          #Writes to the textfile the indicies that will be used           
+	while(i < len(t)):                            #loop for filling the file
+		f.write("%d,%f,%f,%f\n"  %(i,t[i],xpos[i],ypos[i]))
+		i = i + 1 
+	f.close
+	print("data has been saved")
+	input("enter to return")
+  
+# end the save data function
+
+#NOTE
+#this program will write over the previous data if used a second time
