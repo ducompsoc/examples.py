@@ -1,0 +1,26 @@
+#this function makes sure the user does not input any unwanted values
+#the function accepts 4 variables, a string and 3 floats
+#the string is for the user to know what the value they are entering is for
+#minimum and maximum are the lower and upper bounds for the value 
+#defualt_val is the default value that the program returns if the user has 
+#entered anything incorrect 
+
+
+#this function works by comparing the value with the mac=ximum and the minimum
+#and if this comes out to be true then the value is returned normally 
+#if the value is incorrect then it is ignored and the default value is taken
+#if a letter or symbol is entered then the value error is taken into account
+#and the defualt value is still returned
+
+def val_correction(words,default_val,minimum,maximum):
+	try:
+		value = float(input("%s (%f-%f) [%f]: " %(words,minimum,maximum,default_val)))
+		if ((value >= minimum) and (value <= maximum)): #checks to make sure the entered value is within the required limit
+			return value  # if it is in the limit, the vlue is unchanged
+		else:
+			print("value out of range")
+			return default_val #if the value is incorrect, the default value is returned
+	except ValueError:
+		print("Value is incorrect")
+		return default_val 
+#end value correction 
