@@ -1,0 +1,19 @@
+import math
+
+k = int(input("Enter a Value"))   #value inputted by the user 
+x = int(math.sqrt(k))             #calculate the square root of the inputed value while also averaging it
+
+
+while x >= 2:                     #simple while loop
+
+    if k%x == 0:                  #if statement within the loop that checks with each iteration if the inputted value is divisable by the
+        print(k)                  #the value being looped about 
+        print("is not prime")     #prints if value is not prime
+        x = 0                     #sets x as zero to exit the loop
+
+    x = x-1                       #decreases x from the square root till 2
+
+
+if x != -1:                       # since the value is not prime, this if statment is to make sure there were no errors in calculations in
+    print(k)                      # the loop and prints the value while stating it is prime
+    print("is prime")
