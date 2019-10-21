@@ -1,0 +1,78 @@
+while (menu_choice is not 'q'):
+	
+	os.system('clear')
+	
+  #the menu options for this program will not work as the functions have been taken away
+	
+	# greetings and salutations
+	print("Hello this is my program")
+	print("Made by Omar Mazhar")
+	print("\n")
+	
+	
+	# print menu choices
+	print("1. change system parameters")
+	print("2. calculate")
+	print("3. view animation")
+	print("4. plot graph")
+	print("5. print data")
+	print("6. save data")
+	print("q. quit")
+	print("\n")
+	
+	
+	# print current system parameters
+	print("Rest Mass         = %+6.5e kg" %(mass))
+	print("Initial Velocity  = %+6.5e m" %(velocity))
+	print("Starting Angle    = %+6.5e rad" %(angle))
+	print("Air Resistance    = %+6.5e " %(air_resistance))
+	print("time_step         = %+6.5e t" %(time_step))
+	print("runtime           = %+6.5e s" %(runtime))
+	print("Gravity           = %+6.5e kg" %(gravity))
+	print("Starting Height   = %+6.5e kg" %(height))
+	print("\n")
+	
+	
+	# get menu choice
+	menu_choice = input("\nenter your command: ") 	
+	
+	
+	if (menu_choice is '1'):
+		mass = val_correction("enter mass (kg)",0.5,0.1,1000000)
+		velocity = val_correction("enter velocity (m/s)",50,0.000001,10000)
+		angle = math.radians(val_correction("enter angle (deg)",60,10,90))
+		air_resistance = val_correction("enter air resistance (coefficient)",0.1,0.01,1)
+		time_step = val_correction("enter time step (s)",0.01,0.000001,1)
+		runtime = val_correction("enter runtime (s)",30,5,120)
+		gravity = val_correction("enter gravity (m/s^2)",9.81,0,981)
+		height = val_correction("enter height (m)",0,0,4000)
+	
+	elif(menu_choice is '2'):
+		i,t,ypos,xpos,velres,vx,vy,turning_point = calculations(mass,velocity,angle,air_resistance,time_step,runtime,gravity,height)
+		print("data has been calculated")
+		print("number of data points = %d" %(len(t)))
+		input("enter to continue")
+		
+	elif(menu_choice is '3'):
+		do_animation(t,xpos,ypos,velres,height,turning_point)
+		input("enter to continue")
+		
+	elif(menu_choice is '4'):
+		plot_graph(xpos,ypos,velres,t,height)
+		
+	elif(menu_choice is '5'):
+		print_data(t,ypos,xpos)
+		input("enter to continue")
+		
+	elif(menu_choice is '6'):
+		save_data(t,ypos,xpos,velres)
+		
+	elif (menu_choice is 'q'):
+		print("quit")
+	
+	else:
+		print("unknown command")
+		time.sleep(1)
+#ends the main function 
+
+print("end")
